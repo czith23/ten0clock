@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ten0clock</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="login">Login</string>
+    <string name="browse">Browse Without Login</string>
+    <string name="register">Register New Account</string>
+    <string name="welcome">Welcome to Ten0Clock. \n\n Tonight begins now.</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="passwordConfirm">Confirm Password</string>
+    <string name="firstname">First Name:</string>
+    <string name="lastname">Last Name:</string>
+    <string name="register_title">Register</string>
+    <string name="email">Email:</string>
+    <string name="school">University:</string>
+    <string name="birthday">Birthday:</string>
+    <string name="choosedate">Choose Date</string>
+    <string name="phone">Phone Number:</string>
+    <string name="registeraccount">Register Account</string>
+    <string name="title_activity_drawer_template">DrawerTemplate</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="tabs">
+        <item >Profile</item>
+        <item >Venue</item>
+        <item >Events</item>
+        <item >Chat</item>
+    </string-array>
+    <string name="menu_open">Open</string>
+    <string name="menu_close">Close</string>
+    <string name="profile">Profile</string>
+
+</resources>
