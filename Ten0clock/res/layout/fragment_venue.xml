@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:id="@+id/venueView" >
+
+        <RelativeLayout
+            android:id="@+id/vNameSearchWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/vNameSearchLabel"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_centerVertical="true"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/vNameSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@array/Atmospheres"
+                android:layout_toRightOf="@id/vNameSearchLabel"
+                android:ems="10" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/vLocationSearchWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/vLocationSearchLabel"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_centerVertical="true"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/vLocationSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@array/Atmospheres"
+                android:layout_toRightOf="@+id/vLocationSearchLabel"
+                android:ems="10" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/vAtmosphereSearchWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/vAtmosphereSearchLabel"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+				android:layout_centerVertical="true"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/vAtmosphereSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentTop="false"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_centerHorizontal="false"
+                android:layout_centerInParent="false"
+                android:layout_centerVertical="false"
+                android:layout_toRightOf="@id/vAtmosphereSearchLabel"
+                android:entries="@array/Atmospheres" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/vMenuItemSearchWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/vMenuItemSearchLabel"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_centerVertical="true"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/vMenuItemSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@array/Atmospheres"
+                android:layout_toRightOf="@+id/vMenuItemSearchLabel"
+                android:ems="10" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/vVolumeSearchWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/vVolumeSearchLabel"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_centerVertical="true"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/vVolumeSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentTop="false"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_centerHorizontal="false"
+                android:layout_centerInParent="false"
+                android:layout_centerVertical="false"
+                android:layout_toRightOf="@+id/vVolumeSearchLabel"
+                android:entries="@array/Volumes" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/vFriendSearchWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/vFriendSearchLabel"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_centerVertical="true"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/vFriendSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@array/Atmospheres"
+                android:layout_toRightOf="@+id/vFriendSearchLabel"
+                android:ems="10" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/vEventSearchWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/vEventSearchLabel"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_centerVertical="true"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/vEventSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@array/Atmospheres"
+                android:layout_toRightOf="@+id/vEventSearchLabel"
+                android:ems="10" />
+        </RelativeLayout>
+        <Button android:id="@+id/vSearchButton"
+            	android:layout_width="fill_parent"
+            	android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -14,6 +14,10 @@ import android.widget.TextView;
 
 /*
  * Landing Page
+ * ------------
+ * This is the page that will be displayed once Ten0Clock is downloaded, 
+ * installed, and opened for the first time. Browsers have the option to 
+ * register with Ten0Clock or just browse venues without becoming a member. 
  */
 public class MainActivity extends Activity {
 
@@ -34,6 +38,7 @@ public class MainActivity extends Activity {
 		OnClickListener onClickListener = new OnClickListener() {
 		    @Override
 		    public void onClick(View v) {
+		    	// Create Registration activity and launch it
 		    	Intent intent = new Intent(context, RegisterActivity.class);
 		    	startActivity(intent);
 		    }

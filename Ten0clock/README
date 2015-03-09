@@ -1,7 +1,29 @@
 README
 ------
 Ten0clock
+March 9th, 2015
 Thomas Bertolino, Steve DiPietro, Chris Seidl, Christian Ziemba
+
+Overview:
+
+"""
+Peak inside the front door of your favorite restaurant, pub, or concert hall
+ from the comfort of your couch. Ten0clock is an Android utility that surveys
+  nearby venues and gives accurate, real-time descriptions of the action inside.
+
+Check wait-times, menus, crowds, house bands, events, or specials. Ten0clock 
+allows users to post to venue specific chatrooms developing a live review board. 
+Look at what entres your friends have been eating or the bars they've been frequenting.
+
+With Ten0clock you can schedule public or private events and post them to a venue's 
+calendar. Plan game nights, company happy hours, and more. Never leave a crowded restaurant
+again; Ten0clock makes it easy to enjoy a night on the town your way.
+"""
+
+Code Repository: https://github.com/czith23/ten0clock
+Document Repository: https://drive.google.com/folderview?id=0B6wj4zaoQC-1ZjRZbXlRVnNVSm8&usp=sharing
+Demo (See Screenshots or follow running information below): https://drive.google.com/folderview?id=0B6wj4zaoQC-1ZjRZbXlRVnNVSm8&usp=sharing
+Status: https://github.com/czith23/ten0clock/wiki/Christian-Ziemba-Status-Updates
 
 Installation / running:
 1. Be certain that the most recent ADK is installed from within Eclipse.

@@ -7,6 +7,8 @@
     <string name="password">Password:</string>
     <string name="login">Login</string>
     <string name="browse">Browse Without Login</string>
+    <string name="favorites">Favorites: </string>
+    <string name="location">Location: </string>
     <string name="register">Register New Account</string>
     <string name="welcome">Welcome to Ten0Clock. \n\n Tonight begins now.</string>
     <string name="title_activity_register">RegisterActivity</string>
@@ -25,12 +27,37 @@
     <string name="action_settings">Settings</string>
     <string-array name="tabs">
         <item >Profile</item>
-        <item >Venue</item>
+        <item >Venues</item><item>Friends</item>
         <item >Events</item>
         <item >Chat</item>
+        <item >Reviews</item>
+        <item >Polls</item>
+        <item >Settings</item>
+        
     </string-array>
     <string name="menu_open">Open</string>
     <string name="menu_close">Close</string>
     <string name="profile">Profile</string>
-
+    <string-array name="Atmospheres">
+        <item >Clublike</item>
+        <item >Exotic</item>
+        <item >Live Music</item>
+        <item >Casual</item>
+        <item >Formal</item>
+        <item >Quiet</item>
+    </string-array>
+    <string-array name="Volumes">
+        <item >Packed</item>
+        <item >Busy</item>
+        <item >Average</item>
+        <item >Light</item>
+        <item >Empty</item>
+    </string-array>
+    <string name="ec_name">Name: </string>
+    <string name="ec_location">Location:</string>
+    <string name="ec_type">Type:</string>
+    <string name="ec_category">Category:</string>
+    <string name="ec_time">Date &amp; Time:</string>
+    <string name="ec_cost">Cost: ($) </string>
+    <string name="ec_create_button">Create Event</string>
 </resources>
