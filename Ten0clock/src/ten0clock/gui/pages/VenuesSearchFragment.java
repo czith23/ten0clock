@@ -10,6 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+/* 
+ * Venues Search Page
+ * ------------------
+ * This page allows users to look up venues in their area
+ * based on a wide range of criteria
+ */
 public class VenuesSearchFragment extends Fragment {
 	private View venuesView;
 	public VenuesSearchFragment() {

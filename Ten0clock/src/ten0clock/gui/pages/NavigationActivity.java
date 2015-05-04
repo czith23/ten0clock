@@ -86,7 +86,7 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
 		
 		// Use a different fragment depending on the selection
 		if ( tabSelection.equals("Events")) {
-			currentFragment = new EventsFragment();
+			currentFragment = new EventCreateFragment();
 		}
 		else if ( tabSelection.equals("Chat")) {
 			currentFragment = new ChatFragment();
@@ -95,7 +95,7 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
 			currentFragment = new VenuesSearchFragment();
 		}
 		else if ( tabSelection.equals("Polls")) {
-			currentFragment = new PollsFragment();
+			currentFragment = new PollCreateFragment();
 		}
 		else if ( tabSelection.equals("Reviews")) {
 			currentFragment = new ReviewsFragment();

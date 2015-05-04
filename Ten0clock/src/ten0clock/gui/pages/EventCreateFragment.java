@@ -20,9 +20,9 @@ import android.widget.Toast;
  * -----------
  * Page used to create and view events.
  */
-public class EventsFragment extends Fragment{
+public class EventCreateFragment extends Fragment{
 	private View eventsView;
-	public EventsFragment() {
+	public EventCreateFragment() {
 		
 	}
 	
