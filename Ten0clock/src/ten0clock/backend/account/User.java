@@ -1,11 +1,15 @@
 package ten0clock.backend.account;
 
-public class Friend {
+import java.util.ArrayList;
+
+public class User {
 	private String name;
 	private String userID;
 	private boolean status;
 	
-	public Friend(String _name, String _userID, boolean _status) {
+	private ArrayList<User> friends = new ArrayList<User>();
+	
+	public User(String _name, String _userID, boolean _status) {
 		name = _name;
 		userID = _userID;
 		status = _status;

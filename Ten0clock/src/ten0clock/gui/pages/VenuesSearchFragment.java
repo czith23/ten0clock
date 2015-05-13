@@ -1,6 +1,8 @@
 package ten0clock.gui.pages;
 
+import ten0clock.gui.util.OnSwipeTouchListener;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,5 +56,14 @@ public class VenuesSearchFragment extends Fragment {
     	
     	Button vSearchButton = (Button) venuesView.findViewById(R.id.vSearchButton);
     	vSearchButton.setText("Search Venues");
+    	
+    	venuesView.setOnTouchListener(new OnSwipeTouchListener(venuesView.getContext()) {
+    		@Override
+    		public void onSwipeLeft() {
+    			FragmentManager fManager = getFragmentManager();
+    			Fragment venuesViewFragment = new VenuesViewFragment();
+    			fManager.beginTransaction().replace(R.id.mainContent, venuesViewFragment).commit();
+    		}
+    	});
     }
 }

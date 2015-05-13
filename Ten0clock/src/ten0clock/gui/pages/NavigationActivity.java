@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +13,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
 
 /* 
  * NavigationActivity
@@ -23,6 +25,7 @@ import android.widget.Toast;
  * margin of the screen, and it can be swiped on and off of the screen
  * by users.
  */
+@SuppressWarnings("deprecation")
 public class NavigationActivity extends Activity implements OnItemClickListener{
 	private ListView listView;
 	private DrawerLayout drawerLayout;
@@ -62,7 +65,8 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
 			fManager.beginTransaction().replace(R.id.mainContent, currentFragment).commit();
 			setTitle("Profile");
 			selectItem(0);
-			getActionBar().setTitle(tabs[0]);
+
+			//getActionBar().setTitle(tabs[0]);
 			drawerLayout.closeDrawer(listView);
 		}
 		
@@ -115,7 +119,7 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
 			fManager.beginTransaction().replace(R.id.mainContent, currentFragment).commit();
 			setTitle(tabSelection);
 			selectItem(position);
-			getActionBar().setTitle(tabs[position]);
+			//getActionBar().setTitle(tabs[position]);
 			drawerLayout.closeDrawer(listView);
 		}
 	}
