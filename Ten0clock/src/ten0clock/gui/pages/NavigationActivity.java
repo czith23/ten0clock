@@ -1,5 +1,12 @@
 package ten0clock.gui.pages;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+import ten0clock.backend.account.Event;
+import ten0clock.backend.account.Venue;
+import ten0clock.backend.account.Venue.Atmosphere;
+import ten0clock.backend.account.Venue.Volume;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -90,7 +97,23 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
 		
 		// Use a different fragment depending on the selection
 		if ( tabSelection.equals("Events")) {
-			currentFragment = new EventCreateFragment();
+			Venue v1 = new Venue("New Deck Tavern", "3408 Sansom St.", Atmosphere.CASUAL, Volume.LIGHT);
+			Venue v2 = new Venue("Sampan","124 S. 13th",Atmosphere.FORMAL, Volume.BUSY);
+			Venue v3 = new Venue("Shake Shack","3200 Chestnut St.",Atmosphere.CASUAL, Volume.PACKED);
+			Venue v4 = new Venue("North Bowl","909 North 2nd St.",Atmosphere.CASUAL, Volume.BUSY);
+			
+			Event e1 = new Event("Bryan's Birthday", v4, "Birthday", new Date(2015,6,7));
+			Event e2 = new Event("Dinner with Mark", v2, "Work", new Date(2015,7,14));
+			Event e3 = new Event("Quiz-O", v1, "Friends", new Date(2015,6,22));
+			Event e4 = new Event("Dad's Visiting, lunch", v3, "Family", new Date(2015,8,1));
+			
+			ArrayList<Event> es = new ArrayList<Event>();
+			es.add(e1);
+			es.add(e2);
+			es.add(e3);
+			es.add(e4);
+			
+			currentFragment = new EventViewFragment("My Events", es);
 		}
 		else if ( tabSelection.equals("Chat")) {
 			currentFragment = new ChatFragment();
