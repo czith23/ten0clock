@@ -22,7 +22,7 @@ again; Ten0clock makes it easy to enjoy a night on the town your way.
 
 Code Repository: https://github.com/czith23/ten0clock
 Document Repository: https://drive.google.com/folderview?id=0B6wj4zaoQC-1ZjRZbXlRVnNVSm8&usp=sharing
-Demo (See Screenshots or follow running information below): https://drive.google.com/folderview?id=0B6wj4zaoQC-1ZjRZbXlRVnNVSm8&usp=sharing
+Demo: After pulling down the project there is a file called “seniorpres_demo.mp4” which explains and shows a shortened version of the demo given during our final presentation. To actually run / install the application see below.
 Status: https://github.com/czith23/ten0clock/wiki/Christian-Ziemba-Status-Updates
 
 Installation / running:
@@ -30,28 +30,15 @@ Installation / running:
 2. An Android Virtual Device needs to be setup inside of Eclipse to run this program.
 This is the best guide for achieving this: https://developer.android.com/tools/devices/index.html
 3. From within Eclipse: File -> New -> Other -> Android Project From Existing Code
-4. Right click the top level project directory and select "Run as Android Application"
+4. Depending on your version of Eclipse you will need to resolve any app compat support library differences in the build path. For questions on this contact me at cjz32@tux.cs.drexel.edu. 
+5. Right click the top level project directory and select "Run as Android Application"
 
-Implementation Portions for this cycle of the project revolved around Database 
-setup and GUI initialization.
-
-To view what is currently implemented of the MySQL database use the following credentials:
+To view the implementation of the MySQL database use the following credentials:
 Server address: 54.84.33.75
 Username (read-only): test_user
 Password: hopscotch90210
 
 MySQL workbench was used for database development.
-
-For the GUI implementation, the last two weeks of the cycle revolved around research and 
-trial and error. The ADK was new to the team as a tool. After working through how to appropriately
- set up an Android Application, It was decided to focus on three distinct
-pages and layouts for the GUI. The landing page and registration page are separate from the
-innards of the application. Once a user passes these pages navigation is controlled via a 
-drawer navigation design, and getting this set up was the main goal of cycle 1.
-
-Navigation from Landing Page to Registration Page to the base NavigationActivity is available.
-Various XML layouts were also developed during this cycle.
-The application was tested on an Android virtual device. 
 
 AVD Details:
 CPU: Arm
@@ -61,7 +48,7 @@ SD Card: 2G
 Device emulated: Nexus 7 - 2013
 
 Developed layout files can be found in Ten0clock/res/layout
-Developed java files can be found in Ten0clock/src
+Developed java files can be found in Ten0clock/src/*
 Further Support XML files can be found in Ten0clock/res/*
 
 For more project details inspect Ten0clock/AndroidManifest.xml
