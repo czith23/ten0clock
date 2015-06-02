@@ -3,6 +3,7 @@ package ten0clock.gui.pages;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ten0clock.backend.account.User;
 import ten0clock.backend.account.Venue;
 import ten0clock.gui.util.OnSwipeTouchListener;
 import ten0clock.gui.util.VenueListAdapter;
@@ -15,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,16 +32,34 @@ public class VenuesViewFragment extends Fragment {
 	private ArrayList<Venue> venues = new ArrayList<Venue>();
 	private String listingName;
 	private int currentPosition;
+	private User user;
 	
-	public VenuesViewFragment() {
+	public VenuesViewFragment(User u) {
 		listingName = "Matching Venues";
+		user = u;
+		venues = u.Venues();
+		for (Venue v : venues) {
+			HashMap<VenueColumn, String> hMap = new HashMap<VenueColumn, String>();
+			hMap.put(VenueColumn.VENUENAME, v.Name());
+			hMap.put(VenueColumn.VENUELOCATION, v.Location());
+			venueList.add(hMap);
+		}
+		user = u;
 	}
 	
-	public VenuesViewFragment(String name) {
+	public VenuesViewFragment(String name, User u) {
 		listingName = name;
+		venues = u.Venues();
+		for (Venue v : venues) {
+			HashMap<VenueColumn, String> hMap = new HashMap<VenueColumn, String>();
+			hMap.put(VenueColumn.VENUENAME, v.Name());
+			hMap.put(VenueColumn.VENUELOCATION, v.Location());
+			venueList.add(hMap);
+		}
+		user = u;
 	}
 	
-	public VenuesViewFragment(String name, ArrayList<Venue> vs) {
+	public VenuesViewFragment(String name, ArrayList<Venue> vs, User u) {
 		listingName = name;
 		venues = vs;
 		for (Venue v : venues) {
@@ -48,6 +68,7 @@ public class VenuesViewFragment extends Fragment {
 			hMap.put(VenueColumn.VENUELOCATION, v.Location());
 			venueList.add(hMap);
 		}
+		user = u;
 	}
 	
 	@Override
@@ -65,7 +86,7 @@ public class VenuesViewFragment extends Fragment {
     		@Override
     		public void onSwipeRight() {
     			FragmentManager fManager = getFragmentManager();
-    			Fragment venuesSearchFragment = new VenuesSearchFragment();
+    			Fragment venuesSearchFragment = new VenuesSearchFragment(user);
     			fManager.beginTransaction().replace(R.id.mainContent, venuesSearchFragment).commit();
     		}
     	});
@@ -73,10 +94,23 @@ public class VenuesViewFragment extends Fragment {
     		@Override
     		public void onSwipeRight() {
     			FragmentManager fManager = getFragmentManager();
-    			Fragment venuesSearchFragment = new VenuesSearchFragment();
+    			Fragment venuesSearchFragment = new VenuesSearchFragment(user);
     			fManager.beginTransaction().replace(R.id.mainContent, venuesSearchFragment).commit();
     		}
     	});
+    	Button searchButton = (Button) venuesViewView.findViewById(R.id.venueSearchButtonFromView);
+    	searchButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				FragmentManager fManager = getFragmentManager();
+    			Fragment venuesSearchFragment = new VenuesSearchFragment(user);
+    			fManager.beginTransaction().replace(R.id.mainContent, venuesSearchFragment).commit();
+			}
+    		
+    	});
+    	
     	
     	TextView vTitle = (TextView) venuesViewView.findViewById(R.id.venueListingLabel);
     	vTitle.setText(listingName);
@@ -91,7 +125,7 @@ public class VenuesViewFragment extends Fragment {
 	                int position, long id) {
 				currentPosition = position;
 				FragmentManager fManager = getFragmentManager();
-    			Fragment venuesDetailFragment = new VenueDetailFragment(venues.get(currentPosition));
+    			Fragment venuesDetailFragment = new VenueDetailFragment(venues.get(currentPosition), user);
     			fManager.beginTransaction().replace(R.id.mainContent, venuesDetailFragment).commit();
 			}
     		

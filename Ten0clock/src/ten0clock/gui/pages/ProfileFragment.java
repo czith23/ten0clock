@@ -1,9 +1,12 @@
 package ten0clock.gui.pages;
 
+import ten0clock.backend.account.User;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -16,8 +19,10 @@ import android.widget.TextView;
  */
 public class ProfileFragment extends Fragment {
 	private View profileView;
-	public ProfileFragment() {
-		
+	private User user;
+	
+	public ProfileFragment(User u) {
+		user = u;
 	}
 	
     @Override
@@ -32,18 +37,46 @@ public class ProfileFragment extends Fragment {
     // slots
     public void initializeComponents() {
     	TextView profileName = (TextView) profileView.findViewById(R.id.profName);
-    	profileName.setText("Chuck Taylor");
-    	
-    	TextView profileNum = (TextView) profileView.findViewById(R.id.favoritesNum);
-    	profileNum.setText("9");
-    	
-    	Button viewFavoritesButton = (Button) profileView.findViewById(R.id.viewFavoritesButton);
-    	viewFavoritesButton.setText("View Favorites");
+    	profileName.setText(user.Name());
     	
     	TextView location = (TextView) profileView.findViewById(R.id.location);
-    	location.setText("Panera Bread");
+    	if (user.MostRecent() == null) {
+    		location.setText("Never Checked In");
+    	}
+    	else {
+    	    location.setText(user.MostRecent().Name());
+    	}
+    	TextView university = (TextView) profileView.findViewById(R.id.university);
+    	TextView bday = (TextView) profileView.findViewById(R.id.bday);
+    	TextView userid = (TextView) profileView.findViewById(R.id.userId);
+    	university.setText(user.University());
+    	bday.setText(user.Birthday().toString());
+    	userid.setText(user.UserID());
     	
-    	Button viewLocationButton = (Button) profileView.findViewById(R.id.viewLocationButton);
-    	viewLocationButton.setText("View Location");
+    	Button eventButton = (Button) profileView.findViewById(R.id.profileEventButton);
+    	Button venuesButton = (Button) profileView.findViewById(R.id.profileVenuesButton);
+    	eventButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				FragmentManager fManager = getFragmentManager();
+    			Fragment tFragment = new EventViewFragment(user);
+    			fManager.beginTransaction().replace(R.id.mainContent, tFragment).commit();
+			}
+    		
+    	});
+    	
+    	venuesButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				FragmentManager fManager = getFragmentManager();
+    			Fragment eventCreateFragment = new VenuesViewFragment(user);
+    			fManager.beginTransaction().replace(R.id.mainContent, eventCreateFragment).commit();
+			}
+    		
+    	});
     }
 }

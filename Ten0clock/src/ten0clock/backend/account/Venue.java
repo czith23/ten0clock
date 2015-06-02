@@ -25,7 +25,7 @@ public class Venue {
 	private String location;
 	private Atmosphere atmosphere;
 	private Volume volume;
-	
+	private ArrayList<Poll> polls = new ArrayList<Poll>();
 	private ArrayList<Event> events = new ArrayList<Event>();
 	
 	public Venue() {
@@ -90,7 +90,15 @@ public class Venue {
 		
 	}
 	
-	public ArrayList<Event> getEvents() {
+	public ArrayList<Event> Events() {
 		return events;
+	}
+	
+	public void addPoll(Poll p) {
+		polls.add(p);
+	}
+	
+	public ArrayList<Poll> Polls() {
+		return polls;
 	}
 }

@@ -2,6 +2,7 @@ package ten0clock.gui.pages;
 
 import java.util.ArrayList;
 
+import ten0clock.backend.account.User;
 import ten0clock.backend.account.Venue;
 import ten0clock.backend.account.Venue.Atmosphere;
 import ten0clock.backend.account.Venue.Volume;
@@ -26,8 +27,10 @@ import android.widget.TextView;
  */
 public class VenuesSearchFragment extends Fragment {
 	private View venuesView;
-	public VenuesSearchFragment() {
-		
+	private User user;
+	
+	public VenuesSearchFragment(User u) {
+		user = u;
 	}
 	
     @Override
@@ -75,7 +78,7 @@ public class VenuesSearchFragment extends Fragment {
     			vs.add(v3);
 
     			FragmentManager fManager = getFragmentManager();
-    			Fragment venuesViewFragment = new VenuesViewFragment("Matching Venues", vs);
+    			Fragment venuesViewFragment = new VenuesViewFragment("Matching Venues", vs, user);
 
     			fManager.beginTransaction().replace(R.id.mainContent, venuesViewFragment).commit();
 			}
@@ -93,7 +96,7 @@ public class VenuesSearchFragment extends Fragment {
     			vs.add(v2);
     			vs.add(v3);
     			FragmentManager fManager = getFragmentManager();
-    			Fragment venuesViewFragment = new VenuesViewFragment("Your Favorite Venues",vs);
+    			Fragment venuesViewFragment = new VenuesViewFragment("Your Favorite Venues",vs, user);
 
     			fManager.beginTransaction().replace(R.id.mainContent, venuesViewFragment).commit();
     		}

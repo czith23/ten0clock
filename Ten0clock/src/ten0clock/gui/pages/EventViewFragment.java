@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import ten0clock.backend.account.Event;
+import ten0clock.backend.account.User;
 import ten0clock.backend.account.Venue;
 import ten0clock.gui.pages.VenuesViewFragment.VenueColumn;
 import ten0clock.gui.util.EventListAdapter;
@@ -14,8 +15,10 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,21 +32,41 @@ public class EventViewFragment extends Fragment {
 	}
 
 	private View eventsViewView;
+	private User user;
 	private ArrayList<HashMap<EventColumn,String>> eventList = new ArrayList<HashMap<EventColumn,String>>();
 	private ArrayList<Event> events = new ArrayList<Event>();
 	private String listingName;
 	private int currentPosition;
 	
-	public EventViewFragment() {
+	public EventViewFragment(User u) {
 		listingName = "Matching Venues";
+		user = u;
+		events = u.Events();
+		for (Event e : events) {
+			HashMap<EventColumn, String> hMap = new HashMap<EventColumn, String>();
+			hMap.put(EventColumn.NAME, e.Name());
+			hMap.put(EventColumn.DATE, e.Date().toString());
+			hMap.put(EventColumn.LOCATION, e.Location());
+			eventList.add(hMap);
+		}
 	}
 	
-	public EventViewFragment(String name) {
+	public EventViewFragment(String name, User u) {
 		listingName = name;
+		user = u;
+		events = u.Events();
+		for (Event e : events) {
+			HashMap<EventColumn, String> hMap = new HashMap<EventColumn, String>();
+			hMap.put(EventColumn.NAME, e.Name());
+			hMap.put(EventColumn.DATE, e.Date().toString());
+			hMap.put(EventColumn.LOCATION, e.Location());
+			eventList.add(hMap);
+		}
 	}
 	
-	public EventViewFragment(String name, ArrayList<Event> vs) {
+	public EventViewFragment(String name, ArrayList<Event> vs, User u) {
 		listingName = name;
+		user = u;
 		events = vs;
 		for (Event e : events) {
 			HashMap<EventColumn, String> hMap = new HashMap<EventColumn, String>();
@@ -95,8 +118,20 @@ public class EventViewFragment extends Fragment {
 	                int position, long id) {
 				currentPosition = position;
 				FragmentManager fManager = getFragmentManager();
-    			Fragment venuesDetailFragment = new EventDetailFragment(events.get(currentPosition));
+    			Fragment venuesDetailFragment = new EventDetailFragment(events.get(currentPosition), user);
     			fManager.beginTransaction().replace(R.id.mainContent, venuesDetailFragment).commit();
+			}
+    		
+    	});
+    	
+    	Button createButton = (Button) eventsViewView.findViewById(R.id.eventCreateButtonFromView);
+    	createButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				FragmentManager fManager = getFragmentManager();
+    			Fragment eventCreateFragment = new EventCreateFragment(user);
+    			fManager.beginTransaction().replace(R.id.mainContent, eventCreateFragment).commit();
 			}
     		
     	});

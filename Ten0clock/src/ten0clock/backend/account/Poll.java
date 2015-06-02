@@ -33,4 +33,20 @@ public class Poll {
 	public void respond(User u, String r) {
 		responses.put(u, r);
 	}
+	
+	public void setOwner(User u) {
+		owner = u;
+	}
+	
+	public void setVenue(Venue v) {
+		owningVenue = v;
+	}
+	
+	public void setEvent(Event e) {
+		owningEvent = e;
+	}
+	
+	public String Question() {
+		return prompt;
+	}
 }

@@ -1,5 +1,13 @@
 package ten0clock.gui.pages;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+import ten0clock.backend.account.Event;
+import ten0clock.backend.account.User;
+import ten0clock.backend.account.Venue;
+import ten0clock.backend.account.Venue.Atmosphere;
+import ten0clock.backend.account.Venue.Volume;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -10,9 +18,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 /* 
@@ -22,8 +34,9 @@ import android.widget.Toast;
  */
 public class EventCreateFragment extends Fragment{
 	private View eventsView;
-	public EventCreateFragment() {
-		
+	private User user;
+	public EventCreateFragment(User u) {
+		user = u;
 	}
 	
 	@Override
@@ -46,7 +59,24 @@ public class EventCreateFragment extends Fragment{
 		    @Override
 		    public void onClick(View v) {
 		    	Toast.makeText(eventsView.getContext(), "Event Created", Toast.LENGTH_LONG).show();
-		    	
+		    	EditText ecName = (EditText) eventsView.findViewById(R.id.ecName);
+		    	String name = ecName.getText().toString();
+		    	Spinner ecLocation = (Spinner) eventsView.findViewById(R.id.ecLocation);
+		    	int locVal = ecLocation.getSelectedItemPosition();
+		    	Venue tmpV = user.Venues().get(locVal);
+		    	EditText ecCategory = (EditText) eventsView.findViewById(R.id.ecCategory);
+		    	String category = ecCategory.getText().toString();
+		    	Button ecDatePicker = (Button) eventsView.findViewById(R.id.ecTimeChooser);
+		    	String date = (String) ecDatePicker.getText();
+		    	String datea[] = date.split("-");
+		    	int year = Integer.parseInt(datea[0]);
+		    	int month = Integer.parseInt(datea[1]);
+		    	int day = Integer.parseInt(datea[2]);
+		    	Date d = new Date(year, month, day);
+		    	Event tmpE = new Event(name,tmpV,category,d);
+		    	tmpV.Events().add(tmpE);
+		    	user.Events().add(tmpE);
+		    	resetInformation();
 		    }
 		};
 		
@@ -64,14 +94,26 @@ public class EventCreateFragment extends Fragment{
 		
 		// Assign Create Event listener
 		submitButton.setOnClickListener(createEventListener);
+		
+		ArrayList<String> locStrs = new ArrayList<String>();
+		
+		for (Venue v : user.Venues()) {
+			locStrs.add(v.Name());
+		}
+		
+		ArrayAdapter<String> a1 = new ArrayAdapter<String>(
+			    eventsView.getContext(), android.R.layout.simple_spinner_item, locStrs);
+		Spinner vSpinner = (Spinner) eventsView.findViewById(R.id.ecLocation);
+		vSpinner.setAdapter(a1);
+		
     }
     
     // When an event is created we want to clear the fields to allow the user to schedule another event
     public void resetInformation() {
     	EditText ecName = (EditText) eventsView.findViewById(R.id.ecName);
     	ecName.setText("");
-    	EditText ecLocation = (EditText) eventsView.findViewById(R.id.ecLocation);
-    	ecLocation.setText("");
+    	Spinner ecLocation = (Spinner) eventsView.findViewById(R.id.ecLocation);
+    	ecLocation.setSelection(0);
     	EditText ecType = (EditText) eventsView.findViewById(R.id.ecType);
     	ecType.setText("");
     	EditText ecCategory = (EditText) eventsView.findViewById(R.id.ecCategory);

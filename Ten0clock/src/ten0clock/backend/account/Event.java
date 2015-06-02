@@ -1,22 +1,22 @@
 package ten0clock.backend.account;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Event {
 	private String name;
-	private String location;
+	private Venue venue;
 	private String category;
 	private Date date;
-	
-	private Venue venue;
+	private ArrayList<Poll> polls = new ArrayList<Poll>();
 	
 	public Event() {
 	
 	}
 	
-	public Event(String _name, String _location, String _category, Date _date) {
+	public Event(String _name, Venue v, String _category, Date _date) {
 		name = _name;
-		location = _location;
+		venue = v;
 		category = _category;
 		date = _date;
 	}
@@ -26,7 +26,7 @@ public class Event {
 	}
 	
 	public String Location() {
-		return location;
+		return venue.Name();
 	}
 	
 	public String Category() {
@@ -43,5 +43,13 @@ public class Event {
 	
 	public Venue getVenue() {
 		return venue;
+	}
+	
+	public void addPoll(Poll p) {
+		polls.add(p);
+	}
+	
+	public ArrayList<Poll> Polls() {
+		return polls;
 	}
 }

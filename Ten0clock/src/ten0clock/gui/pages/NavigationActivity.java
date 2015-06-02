@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import ten0clock.backend.account.Event;
+import ten0clock.backend.account.User;
 import ten0clock.backend.account.Venue;
 import ten0clock.backend.account.Venue.Atmosphere;
 import ten0clock.backend.account.Venue.Volume;
@@ -37,9 +38,12 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
 	private ListView listView;
 	private DrawerLayout drawerLayout;
 	private String[] tabs;
+	private User user;
+	private User main;
+	private User friend;
 	
     public NavigationActivity() {
-
+    	user = new User("Christian","1",true);
     }
 
     @Override
@@ -65,8 +69,11 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
     // Initialize the first screen to the profile
     public void initializeComponents() {
     	listView.setOnItemClickListener(this);
+    	fakeUsersStub();
+    	user = main;
+    	user.setFake(friend);
     
-    	Fragment currentFragment = new ProfileFragment();
+    	Fragment currentFragment = new ProfileFragment(user);
 		if (currentFragment != null) {
 			FragmentManager fManager = getFragmentManager();
 			fManager.beginTransaction().replace(R.id.mainContent, currentFragment).commit();
@@ -79,7 +86,7 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
 		
 		// Greet to the new user
 		// TODO: Dynamically generate user name from account
-		Toast.makeText(this, "Welcome to Ten0Clock Chuck!", Toast.LENGTH_SHORT).show();;
+		Toast.makeText(this, "Welcome to Ten0Clock "+user.Name()+"!", Toast.LENGTH_SHORT).show();;
     }
 
     /*
@@ -113,16 +120,16 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
 			es.add(e3);
 			es.add(e4);
 			
-			currentFragment = new EventViewFragment("My Events", es);
+			currentFragment = new EventViewFragment("My Events", user);
 		}
 		else if ( tabSelection.equals("Chat")) {
-			currentFragment = new ChatFragment();
+			currentFragment = new BubbleChatFragment(user);
 		}
 		else if ( tabSelection.equals("Venues")) {
-			currentFragment = new VenuesSearchFragment();
+			currentFragment = new VenuesViewFragment("My Favorite Venues", this.user);
 		}
 		else if ( tabSelection.equals("Polls")) {
-			currentFragment = new PollCreateFragment();
+			currentFragment = new PollCreateFragment(this.user);
 		}
 		else if ( tabSelection.equals("Reviews")) {
 			currentFragment = new ReviewsFragment();
@@ -131,10 +138,10 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
 			currentFragment = new SettingsFragment();
 		}
 		else if (tabSelection.equals("Friends")) {
-			currentFragment = new FriendsFragment();
+			currentFragment = new FriendsFragment(user);
 		}
 		else {
-			currentFragment = new ProfileFragment();
+			currentFragment = new ProfileFragment(user);
 		}
 		
 		if (currentFragment != null) {
@@ -150,5 +157,11 @@ public class NavigationActivity extends Activity implements OnItemClickListener{
 	// This keeps tracks of which fragment we are on at all times
 	public void selectItem(int position) {
 		listView.setItemChecked(position, true);
+	}
+	
+	
+	public void fakeUsersStub () {
+		main = new User("Christian","czith23","484-529-2568","Drexel University",new Date(1991,9,23));
+		friend = new User("Stacy","staceCase","215-777-091","Temple University", new Date(1992,4,12));
 	}
 }

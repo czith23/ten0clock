@@ -43,8 +43,20 @@ public class MainActivity extends Activity {
 		    	startActivity(intent);
 		    }
 		};
+		
+		OnClickListener submitListener = new OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+		    	// Create a new activity and launch it as the new page
+		    	Intent intent = new Intent(context, NavigationActivity.class);
+		    	startActivity(intent);
+		    }
+		};
 
 		Button button = (Button) findViewById(R.id.registerButton);
+		Button button2 = (Button) findViewById(R.id.loginButton);
+		
+		button2.setOnClickListener(submitListener);
 		button.setOnClickListener(onClickListener);
 	}
 }
